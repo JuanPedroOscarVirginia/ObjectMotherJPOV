@@ -5,19 +5,30 @@ import java.util.Objects;
 public class Pantalla {
 	
 	private float size;
+	private final float MIN = 5f;
+	private final float MAX = 8f;
 
-	public Pantalla(float size) {
+	public Pantalla() {
 		super();
-		this.size = size;
+		this.size = getPulgada();
 	}
 
 	public float getSize() {
 		return size;
 	}
 
+	public float getMIN() {
+		return MIN;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(size);
+	}
+	
+	public float getPulgada() {
+		float floor = (float)(Math.random()*(MAX-MIN))+MIN;
+		return Math.round(floor * 10) / 10f;
 	}
 
 	@Override
