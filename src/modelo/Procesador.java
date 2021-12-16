@@ -7,12 +7,20 @@ public class Procesador {
 	private String nombre;
 	private int nucleos;
 	private float velocidad;
+	
+	private final float MIN_VELOCIDAD= 1.3f;//1.3 ghz
+	private final float MAX_VELOCIDAD= 3f;//3ghz
+	private final int MIN_NUCLEOS=1;
+	private final int MAX_NUCLEOS=8;
+	
 	public Procesador(String nombre, int nucleos, float velocidad) {
 		super();
 		this.nombre = nombre;
 		this.nucleos = nucleos;
 		this.velocidad = velocidad;
 	}
+	
+	
 	public String getNombre() {
 		return nombre;
 	}

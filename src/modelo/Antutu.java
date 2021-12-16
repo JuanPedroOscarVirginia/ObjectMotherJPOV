@@ -7,12 +7,18 @@ public class Antutu {
 	private int puntuacion;
 	private Procesador procesador;
 	private Ram ram;
+	
 	public Antutu(int puntuacion, Procesador procesador, Ram ram) {
 		super();
 		this.puntuacion = puntuacion;
 		this.procesador = procesador;
 		this.ram = ram;
 	}
+	
+//	public int generarPuntuacion() {
+////		int resultado = 0;
+////		return 0;
+//	}
 	public int getPuntuacion() {
 		return puntuacion;
 	}
