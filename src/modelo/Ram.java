@@ -28,10 +28,7 @@ public class Ram {
 		Random r = new Random();
 		List<Integer> listaRam = r.ints(MIN_GB,MAX_GB+1).limit(30).distinct().boxed().collect(Collectors.toList());
 		listaRam.removeIf((n)-> (n%2 !=0));
-		listaRam.forEach((a)-> System.out.println(a.toString()));
-		
 	
-		System.out.println("ultimo numero:"+listaRam.get(r.nextInt(listaRam.size())));
 		return listaRam.get(r.nextInt(listaRam.size()));
 	}
 
