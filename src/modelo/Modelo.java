@@ -2,13 +2,15 @@ package modelo;
 
 import java.util.Objects;
 
+import utiles.GenerarCadena;
+
 public class Modelo {
 	
 	private String nombre;
 
-	public Modelo(String nombre) {
+	public Modelo() {
 		super();
-		this.nombre = nombre;
+		this.nombre = GenerarCadena.generarModelo(7);
 	}
 
 	public String getNombre() {
@@ -34,7 +36,7 @@ public class Modelo {
 
 	@Override
 	public String toString() {
-		return "Modelo [nombre=" + nombre + "]";
+		return this.nombre;
 	}
 	
 	

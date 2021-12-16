@@ -45,7 +45,7 @@ public class Pantalla {
 
 	@Override
 	public String toString() {
-		return "Pantalla [size=" + size + "]";
+		return String.valueOf(getSize());
 	}
 	
 	

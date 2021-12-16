@@ -50,7 +50,7 @@ public class Bateria {
 
 	@Override
 	public String toString() {
-		return "Bateria [mwh=" + mwh + "]";
+		return "Bateria: " + mwh + " mwh]";
 	}
 	
 	

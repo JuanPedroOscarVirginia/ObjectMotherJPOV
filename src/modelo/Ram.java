@@ -51,7 +51,7 @@ public class Ram {
 
 	@Override
 	public String toString() {
-		return "Ram [gb=" + gb + "]";
+		return "Ram: " + gb + " gb]";
 	}
 	
 	

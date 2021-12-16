@@ -15,7 +15,14 @@ public class Antutu {
 		this.ram = ram;
 	}
 	
-//	public int generarPuntuacion() {
+	
+public Antutu() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	//	public int generarPuntuacion() {
 ////		int resultado = 0;
 ////		return 0;
 //	}

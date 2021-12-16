@@ -2,15 +2,17 @@ package modelo;
 
 import java.util.Objects;
 
+import utiles.GenerarCadena;
+
 public class Marca {
 	
 	private String name;
 
-	public Marca(String name) {
+	public Marca() {
 		super();
-		this.name = name;
+		this.name = GenerarCadena.generarPalabras(7);
 	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -34,7 +36,7 @@ public class Marca {
 
 	@Override
 	public String toString() {
-		return "Marca [name=" + name + "]";
+		return this.name;
 	}
 	
 	
