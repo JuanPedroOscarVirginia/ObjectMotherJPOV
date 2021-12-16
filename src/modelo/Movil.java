@@ -11,20 +11,27 @@ public class Movil {
 	private Procesador procesador;
 	private Antutu antutu;
 	private Bateria bateria;
-	private float Precio;
+	private float precio;
 	
-	public Movil(Marca marca, Modelo modelo, Pantalla pantalla, Ram ram, Procesador procesador, Antutu antutu,
-			Bateria bateria, float precio) {
+	public Movil(Antutu antutu, float precio) {
+		super();
+		this.marca = new Marca();
+		this.modelo = new Modelo();
+		this.pantalla = new Pantalla();
+		this.ram = new Ram();
+		this.procesador = new Procesador();
+		this.antutu = antutu;
+		this.bateria = new Bateria(this.pantalla);
+		this.precio = precio;
+	}
+
+	
+	public Movil(Marca marca, Modelo modelo) {
 		super();
 		this.marca = marca;
 		this.modelo = modelo;
-		this.pantalla = pantalla;
-		this.ram = ram;
-		this.procesador = procesador;
-		this.antutu = antutu;
-		this.bateria = bateria;
-		Precio = precio;
 	}
+
 
 	public Marca getMarca() {
 		return marca;
@@ -83,16 +90,30 @@ public class Movil {
 	}
 
 	public float getPrecio() {
-		return Precio;
+		return precio;
 	}
 
 	public void setPrecio(float precio) {
-		Precio = precio;
+		this.precio = precio;
 	}
+
+	
+	@Override
+	public String toString() {
+		return "Movil [marca=" + marca.toString() + ", modelo=" + modelo.toString() + ", pantalla=" + pantalla.toString() + ", " + ram.toString()
+				+ ", " + procesador.toString() + ", antutu=" + antutu + ", " + bateria.toString() + ", Precio=" + precio
+				+ "]";
+	}
+	
+	
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Precio, antutu, bateria, marca, modelo, pantalla, procesador, ram);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((marca == null) ? 0 : marca.hashCode());
+		result = prime * result + ((modelo == null) ? 0 : modelo.hashCode());
+		return result;
 	}
 
 	@Override
@@ -104,18 +125,17 @@ public class Movil {
 		if (getClass() != obj.getClass())
 			return false;
 		Movil other = (Movil) obj;
-		return Float.floatToIntBits(Precio) == Float.floatToIntBits(other.Precio)
-				&& Objects.equals(antutu, other.antutu) && Objects.equals(bateria, other.bateria)
-				&& Objects.equals(marca, other.marca) && Objects.equals(modelo, other.modelo)
-				&& Objects.equals(pantalla, other.pantalla) && Objects.equals(procesador, other.procesador)
-				&& Objects.equals(ram, other.ram);
-	}
-
-	@Override
-	public String toString() {
-		return "Movil [marca=" + marca + ", modelo=" + modelo + ", pantalla=" + pantalla + ", ram=" + ram
-				+ ", procesador=" + procesador + ", antutu=" + antutu + ", bateria=" + bateria + ", Precio=" + Precio
-				+ "]";
+		if (marca == null) {
+			if (other.marca != null)
+				return false;
+		} else if (!marca.equals(other.marca))
+			return false;
+		if (modelo == null) {
+			if (other.modelo != null)
+				return false;
+		} else if (!modelo.equals(other.modelo))
+			return false;
+		return true;
 	}
 	
 	
