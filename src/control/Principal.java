@@ -8,18 +8,19 @@ import modelo.Modelo;
 import modelo.Movil;
 
 public class Principal {
+	static int contador=1;
 
 	public static void main(String[] args) {
+		
 		ObjectMother objectMother = new ObjectMother();
-		for (int i = 0; i < 20; i++) {
-			System.out.println(objectMother.generarMovil().toString());
+		Set<Movil> listaMoviles = new HashSet<>();
+		
+		for (int i = 0; i < 500; i++) {
+			listaMoviles.add(objectMother.generarMovil());
 		}
 		
-//		Set<Movil> listaMoviles = new HashSet<>();
-//		listaMoviles.add(new Movil(new Marca("Hola"), new Modelo("Hola")));
-//		listaMoviles.add(new Movil(new Marca("Hola"), new Modelo("Hola")));
-//		
-//		listaMoviles.forEach((a) ->{System.out.println(a.toString());});
+		listaMoviles.forEach((a)->{System.out.println((contador++) +" "+a.toString());});
+		
 		
 	}
 

@@ -9,7 +9,7 @@ public class ObjectMother {
 	MovilBuilder movilBuilder;
 	
 	public Movil generarMovil(){
-		movilBuilder = new MovilBuilder(new Antutu(), 2f);
+		movilBuilder = new MovilBuilder();
 		return movilBuilder.movilBuild();
 	}
 	

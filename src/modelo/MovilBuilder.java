@@ -11,20 +11,25 @@ public class MovilBuilder {
 	private final Bateria bateria;
 	private float precio;
 	
-	public MovilBuilder(Antutu antutu, float precio) {
+	public MovilBuilder() {
 		super();
 		this.marca = new Marca();
 		this.modelo = new Modelo();
 		this.pantalla = new Pantalla();
 		this.ram = new Ram();
 		this.procesador = new Procesador();
-		this.antutu = antutu;
+		this.antutu = new Antutu(procesador,ram);
 		this.bateria = new Bateria(pantalla, procesador,ram);
-		this.precio = precio;
+		this.precio = calcularPrecio();
 	}
 	
+	private float calcularPrecio() {
+		return this.pantalla.calcularPrecio()+ this.ram.calcularPrecio()+this.procesador.calcularPrecio()+this.bateria.calcularPrecio();
+	}
+	
+	
 	public Movil movilBuild() {
-		return new Movil(antutu, precio,this);
+		return new Movil(this);
 	}
 	
 
