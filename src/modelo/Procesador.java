@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import utiles.GenerarCadena;
 
-public class Procesador {
+public class Procesador implements IPrecio{
 	
 	private String nombre;
 	private int nucleos;
@@ -47,6 +47,14 @@ public class Procesador {
 		return Math.round(mwh * 10) / 10f;
 	}
 	
+	@Override
+	public float calcularPrecio() {
+		float incrementoVelocidad = 35;
+		float incrementoNucleos =35 ;
+		float resultado = (incrementoVelocidad*this.velocidad)+((incrementoNucleos*this.nucleos)/2);
+		return resultado;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -76,6 +84,8 @@ public class Procesador {
 	public String toString() {
 		return "Procesador: " + nombre + ", "+ nucleos + " nucleos, " + velocidad + " ghz]";
 	}
+
+
 	
 	
 }

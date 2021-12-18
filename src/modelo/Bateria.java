@@ -2,7 +2,7 @@ package modelo;
 
 import java.util.Objects;
 
-public class Bateria {
+public class Bateria implements IPrecio{
 	
 	private int mwh;
 	private int mwhMin = 2500;
@@ -41,6 +41,12 @@ public class Bateria {
 		return mwh;
 	}
 	
+	@Override
+	public float calcularPrecio() {
+		float incrementoBateria= 0.01f;
+		return incrementoBateria*this.mwh;
+	}
+	
 
 	public int getMwh() {
 		return mwh;
@@ -67,6 +73,8 @@ public class Bateria {
 	public String toString() {
 		return "Bateria: " + mwh + " mwh]";
 	}
+
+
 	
 	
 }

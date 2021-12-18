@@ -11,19 +11,19 @@ public class Movil {
 	private Procesador procesador;
 	private Antutu antutu;
 	private Bateria bateria;
-	
 	private float precio;
 	
-	public Movil(Antutu antutu, float precio, MovilBuilder builder) {
+	
+	public Movil(MovilBuilder builder) {
 		super();
 		this.marca = builder.getMarca();
 		this.modelo = builder.getModelo();
 		this.pantalla = builder.getPantalla();
 		this.ram = builder.getRam();
 		this.procesador = builder.getProcesador();
-		this.antutu = antutu;
+		this.antutu = builder.getAntutu();
 		this.bateria = builder.getBateria();
-		this.precio = precio;
+		this.precio = builder.getPrecio();
 	}
 
 	
@@ -101,8 +101,8 @@ public class Movil {
 	
 	@Override
 	public String toString() {
-		return "Movil [marca=" + marca.toString() + ", modelo=" + modelo.toString() + ", pantalla=" + pantalla.toString() + ", " + ram.toString()
-				+ ", " + procesador.toString() + ", antutu=" + antutu + ", " + bateria.toString() + ", Precio=" + precio
+		return "Movil [Marca:" + marca.toString() + ", Modelo:" + modelo.toString() + ", Pantalla:" + pantalla.toString() + ", " + ram.toString()
+				+ ", " + procesador.toString() + ", Antutu: " + antutu + ", " + bateria.toString() + ", Precio:" + precio
 				+ "]";
 	}
 	

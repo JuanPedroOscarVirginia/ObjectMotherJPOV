@@ -2,7 +2,7 @@ package modelo;
 
 import java.util.Objects;
 
-public class Pantalla {
+public class Pantalla implements IPrecio{
 	
 	private float size;
 	private final float MIN = 5f;
@@ -11,6 +11,12 @@ public class Pantalla {
 	public Pantalla() {
 		super();
 		this.size = getPulgada();
+	}
+	
+	@Override
+	public float calcularPrecio() {
+		float incrementoPantalla=10;
+		return incrementoPantalla*this.size;
 	}
 
 	public float getSize() {
@@ -47,6 +53,8 @@ public class Pantalla {
 	public String toString() {
 		return String.valueOf(getSize());
 	}
+
+	
 	
 	
 
