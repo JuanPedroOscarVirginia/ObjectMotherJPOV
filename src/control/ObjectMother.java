@@ -2,12 +2,15 @@ package control;
 
 import modelo.Antutu;
 import modelo.Movil;
+import modelo.MovilBuilder;
 
 public class ObjectMother {
-
+	
+	MovilBuilder movilBuilder;
 	
 	public Movil generarMovil(){
-		return new Movil(new Antutu(), 5f);
+		movilBuilder = new MovilBuilder(new Antutu(), 2f);
+		return movilBuilder.movilBuild();
 	}
 	
 }

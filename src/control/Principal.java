@@ -20,6 +20,7 @@ public class Principal {
 //		listaMoviles.add(new Movil(new Marca("Hola"), new Modelo("Hola")));
 //		
 //		listaMoviles.forEach((a) ->{System.out.println(a.toString());});
+		
 	}
 
 }
