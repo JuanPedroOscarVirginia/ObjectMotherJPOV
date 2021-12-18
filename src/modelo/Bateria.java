@@ -7,25 +7,40 @@ public class Bateria {
 	private int mwh;
 	private int mwhMin = 2500;
 	private int mwhMax = 3000;
-	private float incrementoMwh = 700f;
+	private float incrementoMwh = 500f;
 
-	public Bateria(Pantalla pantalla) {
+	public Bateria(Pantalla pantalla, Procesador procesador, Ram ram) {
 		super();
-		this.mwh = calcularBateria(pantalla);
+		this.mwh = calcularBateria(pantalla, procesador, ram);
 	}
 
-	private int calcularBateria(Pantalla pantalla) {
+	private int calcularBateria(Pantalla pantalla,Procesador procesador, Ram ram) {
 		float pulgadasSobrantes = pantalla.getSize()-pantalla.getMIN();
 		pulgadasSobrantes *= incrementoMwh;
 		mwhMin += pulgadasSobrantes;
 		mwhMax += pulgadasSobrantes;
-		return getMwhRandom(mwhMax, mwhMin);
+		return getMwhRandom(mwhMax, mwhMin)+ obtenerIncrProcesador(procesador)+ obtenerIncrRam(ram);
 	}
 	
-	public int getMwhRandom(int max, int min) {
+	private int obtenerIncrProcesador(Procesador procesador) {
+		float incrementoNucleo = 200f;
+		float incrementoVelocidad = 200f;
+		float velocidad = procesador.getVelocidad()*incrementoVelocidad;
+		float nucleos = (procesador.getNucleos()*incrementoNucleo)/2;
+		float suma = velocidad+nucleos;
+		return (int) suma;
+	}
+	private int obtenerIncrRam(Ram ram) {
+		float incrementoGb = 200f;
+		float gb = (ram.getGb()*incrementoGb)/2;
+		return (int)gb;
+	}
+	
+	private int getMwhRandom(int max, int min) {
 		int mwh = (int) (Math.random()*(max-min)+min);
 		return mwh;
 	}
+	
 
 	public int getMwh() {
 		return mwh;

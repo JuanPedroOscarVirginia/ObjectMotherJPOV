@@ -11,17 +11,18 @@ public class Movil {
 	private Procesador procesador;
 	private Antutu antutu;
 	private Bateria bateria;
+	
 	private float precio;
 	
-	public Movil(Antutu antutu, float precio) {
+	public Movil(Antutu antutu, float precio, MovilBuilder builder) {
 		super();
-		this.marca = new Marca();
-		this.modelo = new Modelo();
-		this.pantalla = new Pantalla();
-		this.ram = new Ram();
-		this.procesador = new Procesador();
+		this.marca = builder.getMarca();
+		this.modelo = builder.getModelo();
+		this.pantalla = builder.getPantalla();
+		this.ram = builder.getRam();
+		this.procesador = builder.getProcesador();
 		this.antutu = antutu;
-		this.bateria = new Bateria(this.pantalla);
+		this.bateria = builder.getBateria();
 		this.precio = precio;
 	}
 
