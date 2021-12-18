@@ -5,33 +5,39 @@ import java.util.Objects;
 public class Antutu {
 	
 	private int puntuacion;
-	private Procesador procesador;
-	private Ram ram;
+	private final float puntuacionMin = 40000f;
 	
-	public Antutu(int puntuacion, Procesador procesador, Ram ram) {
+
+	public Antutu(Procesador procesador,Ram ram ) {
 		super();
-		this.puntuacion = puntuacion;
-		this.procesador = procesador;
-		this.ram = ram;
+		this.puntuacion = generarPuntuacion(procesador,ram);
+	
+		
 	}
 	
-//	public int generarPuntuacion() {
-////		int resultado = 0;
-////		return 0;
-//	}
+	private int generarPuntuacion(Procesador procesador, Ram ram) {
+		float incrementoNucleo = 35000f;
+		float incrementoVelocidad = 30000f;
+		float velocidadActual= procesador.getVelocidad()*incrementoVelocidad;
+		float nucleosActual = (procesador.getNucleos()*incrementoNucleo)/2;
+		float incrementoRam = 30000f;
+		float gb = (ram.getGb()*incrementoRam)/2;
+		return (int) (velocidadActual+nucleosActual+puntuacionMin+gb);
+	}
+
 	public int getPuntuacion() {
 		return puntuacion;
 	}
-	public Procesador getProcesador() {
-		return procesador;
+
+	public void setPuntuacion(int puntuacion) {
+		this.puntuacion = puntuacion;
 	}
-	public Ram getRam() {
-		return ram;
-	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(procesador, puntuacion, ram);
+		return Objects.hash(puntuacion);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -41,13 +47,17 @@ public class Antutu {
 		if (getClass() != obj.getClass())
 			return false;
 		Antutu other = (Antutu) obj;
-		return Objects.equals(procesador, other.procesador) && puntuacion == other.puntuacion
-				&& Objects.equals(ram, other.ram);
+		return puntuacion == other.puntuacion;
 	}
+
 	@Override
 	public String toString() {
-		return "Antutu [puntuacion=" + puntuacion + ", procesador=" + procesador + ", ram=" + ram + "]";
+		return " " + puntuacion + "]";
 	}
+	
+	
+	
+	
 	
 	
 }

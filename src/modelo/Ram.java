@@ -8,7 +8,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Ram {
+public class Ram implements IPrecio{
 	
 	private int gb;
 	private final int MIN_GB=2;
@@ -31,6 +31,13 @@ public class Ram {
 	
 		return listaRam.get(r.nextInt(listaRam.size()));
 	}
+	
+
+	@Override
+	public float calcularPrecio() {
+		float incremento = 20f;
+		return (incremento*this.gb)/2;
+	}
 
 	@Override
 	public int hashCode() {
@@ -51,8 +58,9 @@ public class Ram {
 
 	@Override
 	public String toString() {
-		return "Ram [gb=" + gb + "]";
+		return "Ram: " + gb + " gb]";
 	}
+
 	
 	
 }

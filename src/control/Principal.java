@@ -1,19 +1,25 @@
 package control;
 
-import modelo.Bateria;
-import modelo.Pantalla;
-import modelo.Ram;
+import java.util.HashSet;
+import java.util.Set;
+
+import modelo.Marca;
+import modelo.Modelo;
+import modelo.Movil;
 
 public class Principal {
+	static int contador=1;
 
 	public static void main(String[] args) {
-		ObjectMother objectMother = new ObjectMother();
-//		Pantalla pantalla = objectMother.generarPantalla();
-//		Bateria generarBateria = objectMother.generarBateria(pantalla);
-//		System.out.println(pantalla.toString());
-//		System.out.println(generarBateria.toString());
 		
-		Ram ram = new Ram();
+		ObjectMother objectMother = new ObjectMother();
+		Set<Movil> listaMoviles = new HashSet<>();
+		
+		for (int i = 0; i < 500; i++) {
+			listaMoviles.add(objectMother.generarMovil());
+		}
+		
+		listaMoviles.forEach((a)->{System.out.println((contador++) +" "+a.toString());});
 		
 		
 	}

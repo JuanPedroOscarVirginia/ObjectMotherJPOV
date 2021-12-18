@@ -5,7 +5,9 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class Procesador {
+import utiles.GenerarCadena;
+
+public class Procesador implements IPrecio{
 	
 	private String nombre;
 	private int nucleos;
@@ -17,11 +19,11 @@ public class Procesador {
 	private final int MIN_NUCLEOS=2;
 	private final int MAX_NUCLEOS=8;
 	
-	public Procesador(String nombre, int nucleos, float velocidad) {
+	public Procesador() {
 		super();
-		this.nombre = nombre;
+		this.nombre = GenerarCadena.generarPalabras(5);
 		this.nucleos = generarNucleos();
-		this.velocidad = velocidad;
+		this.velocidad = generarVelocidad();
 	}
 	
 	public int generarNucleos(){
@@ -40,9 +42,17 @@ public class Procesador {
 		return getGhzRandom(maxVelocidad, minVelocidad);
 	}
 	
-	public int getGhzRandom(int max, int min) {
-		int mwh = (int) (Math.random()*(max-min)+min);
-		return mwh;
+	public float getGhzRandom(float max, float min) {
+		float mwh = (float) (Math.random()*(max-min)+min);
+		return Math.round(mwh * 10) / 10f;
+	}
+	
+	@Override
+	public float calcularPrecio() {
+		float incrementoVelocidad = 35;
+		float incrementoNucleos =35 ;
+		float resultado = (incrementoVelocidad*this.velocidad)+((incrementoNucleos*this.nucleos)/2);
+		return resultado;
 	}
 	
 	public String getNombre() {
@@ -72,8 +82,10 @@ public class Procesador {
 	}
 	@Override
 	public String toString() {
-		return "Procesador [nombre=" + nombre + ", nucleos=" + nucleos + ", velocidad=" + velocidad + "]";
+		return "Procesador: " + nombre + ", "+ nucleos + " nucleos, " + velocidad + " ghz]";
 	}
+
+
 	
 	
 }

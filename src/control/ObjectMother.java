@@ -1,16 +1,16 @@
 package control;
 
-import modelo.Bateria;
-import modelo.Pantalla;
+import modelo.Antutu;
+import modelo.Movil;
+import modelo.MovilBuilder;
 
 public class ObjectMother {
-
 	
-	public Pantalla generarPantalla(){
-		return new Pantalla();
+	MovilBuilder movilBuilder;
+	
+	public Movil generarMovil(){
+		movilBuilder = new MovilBuilder();
+		return movilBuilder.movilBuild();
 	}
 	
-	public Bateria generarBateria(Pantalla pantalla){
-		return new Bateria(pantalla);
-	}
 }
